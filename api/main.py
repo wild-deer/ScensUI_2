@@ -35,17 +35,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/assets", StaticFiles(directory="dist/assets"), name="assets")
-
 app.include_router(routers.wyfwqd.router)
 
 
-@app.get("/{path:path}")
-async def read_index():
-    """
-    挂载网页
-    """
-    return FileResponse("dist/index.html")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8889, reload=True)

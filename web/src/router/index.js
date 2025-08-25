@@ -11,15 +11,16 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
+    
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'),
+      path: '/structure-recognition',
+      name: 'StructureRecognition',
+      component: () => import('../views/StructureRecognition.vue'),
     },
     {
-      path: '/Wyfwqd',
-      name: 'Wyfwqd',
-      component: () => import('../views/Wyfwqd.vue'),
+      path: '/icon-gallery',
+      name: 'IconGallery',
+      component: () => import('../views/IconGallery.vue'),
     },
   ],
 })
