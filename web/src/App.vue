@@ -1,6 +1,40 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import {
+  IconNewFile,
+  IconOpenFolder,
+  IconSave,
+  IconPrint,
+  IconSearch,
+  IconZoomIn,
+  IconZoomOut,
+  IconFitToScreen,
+  IconDrag,
+  IconArrowUp,
+  IconArrowRight,
+  IconNorthPole,
+  IconCompass,
+  IconBreak,
+  IconDiscrete,
+  IconLength,
+  IconTuoPu,
+  IconAnTiTuoPu,
+  IconHeatmapEarth,
+  IconLatLonEarth,
+  IconGridEarth,
+  IconAngleMeasurement,
+  IconSlopeMeasurement,
+  IconCone,
+  IconExclude,
+  IconAddText,
+  IconSitArrow,
+  IconOvalBox,
+  IconRactagle,
+  IconSlash,
+  IconIncompleteHexagon,
+  IconRegularHexagon
+} from '@/components/icons'
 
 const route = useRoute()
 const router = useRouter()
@@ -65,7 +99,7 @@ const navigateToPage = (routeName) => {
 const getCurrentPageTitle = () => {
   const pageMap = {
     'home': '主页',
-
+    'IconGallery': '图标库',
     'StructureRecognition': '结构面智能识别'
   }
   return pageMap[route.name] || '未知页面'
@@ -79,7 +113,7 @@ const getCurrentPageTitle = () => {
       <!-- 顶部标题 -->
       <div class="p-6 border-b border-gray-200">
         <h1 class="text-xl font-bold text-center text-blue-600">
-          泥石流物源自动识别与体积估算软件
+          岩体结构面识别与稳定性快速评价系统
         </h1>
       </div>
       
@@ -152,22 +186,47 @@ const getCurrentPageTitle = () => {
           </div>
           <div v-show="openSections.kinematicAnalysis" class="ml-6 mt-2">
             <div class="bg-gray-50 border border-gray-200 rounded-lg p-3">
-              <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="space-y-1">
-                  <div class="text-gray-600">Direct Toppling: ✓</div>
-                  <div class="text-gray-600">Slope Dip: 42</div>
-                  <div class="text-gray-600">Slope Dip Direction: 150</div>
-                  <div class="text-gray-600">Friction Angle: 30</div>
+              <div class="space-y-3 text-xs">
+                <!-- 破坏类型选择 -->
+                <div class="space-y-2">
+                  <label class="block text-gray-700 font-medium">破坏类型:</label>
+                  <select class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="plane">平面破坏</option>
+                    <option value="wedge">楔形体破坏</option>
+                    <option value="flexural">弯曲倾倒破坏</option>
+                    <option value="direct" selected>直接倾倒破坏</option>
+                  </select>
                 </div>
-                <div class="space-y-1">
-                  <div class="text-gray-600">Lateral Limit: 20</div>
+                
+                <!-- 边坡参数 -->
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">边坡倾角:</label>
+                    <input type="number" value="42" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">边坡倾向:</label>
+                    <input type="number" value="150" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">摩擦角:</label>
+                    <input type="number" value="30" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-gray-700 font-medium">横向限制:</label>
+                    <input type="number" value="20" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  </div>
+                </div>
+                
+                <!-- 显示选项 -->
+                <div class="space-y-2">
                   <div class="flex items-center space-x-2">
-                    <input type="checkbox" checked class="w-3 h-3">
-                    <span class="text-gray-600">Show Construction Lines</span>
+                    <input type="checkbox" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                    <span class="text-gray-700">构造线显示</span>
                   </div>
                   <div class="flex items-center space-x-2">
-                    <input type="checkbox" checked class="w-3 h-3">
-                    <span class="text-gray-600">Show Height</span>
+                    <input type="checkbox" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500">
+                    <span class="text-gray-700">高亮显示</span>
                   </div>
                 </div>
               </div>
@@ -176,6 +235,17 @@ const getCurrentPageTitle = () => {
         </div>
 
         <!-- 物源估算功能 -->
+        
+        <!-- 图标库 -->
+        <div class="mb-4">
+          <div 
+            @click="navigateToPage('IconGallery')"
+            class="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-100 transition-all"
+          >
+            <div class="w-0 h-0 border-l-6 border-l-gray-600 border-t-3 border-t-transparent border-b-3 border-b-transparent mr-3"></div>
+            <span class="font-medium">图标库</span>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -201,155 +271,120 @@ const getCurrentPageTitle = () => {
       </div>
       
       <!-- 工具图标栏 -->
-      <div class="h-12 bg-gray-50 border-b border-gray-200 flex items-center px-4 space-x-2">
-        <!-- 文件操作工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded" title="新建文件">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12h6v-2H9v2zm0-4h6V6H9v2zm-2 4V6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H9a2 2 0 01-2-2z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="打开文件夹">
-            <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="保存">
-            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h-1v5.586l-2.293-2.293z"/>
-            </svg>
-          </button>
-        </div>
+      <div class="h-12 bg-gray-50 border-b border-gray-200 flex items-center px-4 space-x-1 overflow-x-auto">
+        <!-- 32个图标按钮 -->
+        <button class="p-2 hover:bg-gray-200 rounded" title="新建文件">
+          <IconNewFile class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="打开文件夹">
+          <IconOpenFolder class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="保存">
+          <IconSave class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="打印">
+          <IconPrint class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="查找">
+          <IconSearch class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="放大">
+          <IconZoomIn class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="缩小">
+          <IconZoomOut class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="视角调整到合适大小">
+          <IconFitToScreen class="w-4 h-4 text-gray-600" />
+        </button>
         
         <div class="w-px h-6 bg-gray-300"></div>
         
-        <!-- 视图控制工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded" title="放大">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="缩小">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="适应窗口">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="平移工具">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h-1v5.586l-2.293-2.293z"/>
-            </svg>
-          </button>
-        </div>
+        <button class="p-2 hover:bg-gray-200 rounded" title="拖动">
+          <IconDrag class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="朝上">
+          <IconArrowUp class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="朝右">
+          <IconArrowRight class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="北极">
+          <IconNorthPole class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="指南针">
+          <IconCompass class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="断裂">
+          <IconBreak class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="离散">
+          <IconDiscrete class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="测量">
+          <IconLength class="w-4 h-4 text-gray-600" />
+        </button>
         
         <div class="w-px h-6 bg-gray-300"></div>
         
-        <!-- 移动和旋转工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded bg-blue-100" title="向上移动">
-            <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="向右移动">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-            </svg>
-          </button>
-        </div>
+        <button class="p-2 hover:bg-gray-200 rounded" title="拓扑">
+          <IconTuoPu class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="反拓扑">
+          <IconAnTiTuoPu class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="热力图地球">
+          <IconHeatmapEarth class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="经纬度地球">
+          <IconLatLonEarth class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="网格地球">
+          <IconGridEarth class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="测量两点与地心之间的夹角">
+          <IconAngleMeasurement class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="测量坡度">
+          <IconSlopeMeasurement class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="圆锥">
+          <IconCone class="w-4 h-4 text-gray-600" />
+        </button>
         
         <div class="w-px h-6 bg-gray-300"></div>
         
-        <!-- 方向和测量工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded bg-blue-100" title="指北针">
-            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M10 2L10 18M2 10L18 10" stroke="currentColor" stroke-width="1"/>
-              <path d="M10 2L12 8L10 6L8 8L10 2" fill="currentColor"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="分割">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="旋转">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 01-1 1h-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01-.61-1.276z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="测量">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6z"/>
-            </svg>
-          </button>
-        </div>
-        
-        <div class="w-px h-6 bg-gray-300"></div>
-        
-        <!-- 绘图工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded" title="点">
-            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <circle cx="10" cy="10" r="3" fill="currentColor"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="线">
-            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 10h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="面">
-            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-            </svg>
-          </button>
-        </div>
-        
-        <div class="w-px h-6 bg-gray-300"></div>
-        
-        <!-- 分析工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded" title="坡度分析">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded bg-blue-100" title="高程分析">
-            <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-            </svg>
-          </button>
-        </div>
-        
-        <div class="w-px h-6 bg-gray-300"></div>
-        
-        <!-- 标注工具 -->
-        <div class="flex items-center space-x-1">
-          <button class="p-2 hover:bg-gray-200 rounded" title="文本标注">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-            </svg>
-          </button>
-          <button class="p-2 hover:bg-gray-200 rounded" title="箭头">
-            <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"/>
-            </svg>
-          </button>
-        </div>
+        <button class="p-2 hover:bg-gray-200 rounded" title="不包括">
+          <IconExclude class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="添加文本">
+          <IconAddText class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="坐上箭头">
+          <IconSitArrow class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="椭圆方框">
+          <IconOvalBox class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="矩形">
+          <IconRactagle class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="斜杠">
+          <IconSlash class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="六边形有六个点但左下的边缺失">
+          <IconIncompleteHexagon class="w-4 h-4 text-gray-600" />
+        </button>
+        <button class="p-2 hover:bg-gray-200 rounded" title="普通六边形">
+          <IconRegularHexagon class="w-4 h-4 text-gray-600" />
+        </button>
       </div>
       
       <!-- 主工作区 - 带路由过渡动画 -->
-      <div class="flex-1 bg-gray-50/80 relative overflow-hidden">
-    <Transition :name="transitionName" mode="out-in">
-      <RouterView />
-    </Transition>
+      <div class="flex-1 bg-gray-50/80 relative overflow-y-auto">
+        <Transition :name="transitionName">
+          <RouterView class="absolute inset-0 w-full h-full" :key="route.fullPath" />
+        </Transition>
       </div>
     </div>
   </div>
@@ -359,38 +394,37 @@ const getCurrentPageTitle = () => {
 /* 路由左滑动画（前进） */
 .slide-left-enter-active,
 .slide-left-leave-active {
-  transition: all 0.5s ease;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .slide-left-enter-from {
   transform: translateX(100%);
-  opacity: 0;
 }
 
 .slide-left-leave-to {
   transform: translateX(-100%);
-  opacity: 0;
 }
 
 /* 路由右滑动画（后退） */
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition: all 0.5s ease;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .slide-right-enter-from {
   transform: translateX(-100%);
-  opacity: 0;
 }
 
 .slide-right-leave-to {
   transform: translateX(100%);
-  opacity: 0;
+}
+
+/* 确保动画容器正确定位 */
+.slide-left-enter-active > *,
+.slide-left-leave-active > *,
+.slide-right-enter-active > *,
+.slide-right-leave-active > * {
+  height: 100%;
+  width: 100%;
 }
 </style>

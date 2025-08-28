@@ -1,10 +1,14 @@
 <template>
-  <div class="icon-gallery">
-    <h1>图标库</h1>
-    <div class="icon-grid">
-      <div class="icon-item" v-for="icon in icons" :key="icon.name">
-        <component :is="icon.component" class="icon" />
-        <span class="icon-name">{{ icon.name }}</span>
+  <div class="p-5 max-w-6xl mx-auto">
+    <h1 class="text-center mb-8 text-slate-800 text-2xl font-bold">图标库</h1>
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-5">
+      <div 
+        class="flex flex-col items-center p-5 border border-gray-200 rounded-lg bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-emerald-500" 
+        v-for="icon in icons" 
+        :key="icon.name"
+      >
+        <component :is="icon.component" class="w-12 h-12 mb-2.5 text-emerald-500" />
+        <span class="text-center text-xs text-gray-600 leading-relaxed break-words">{{ icon.name }}</span>
       </div>
     </div>
   </div>
@@ -39,7 +43,11 @@ import {
   IconOvalBox,
   IconSlash,
   IconIncompleteHexagon,
-  IconRegularHexagon
+  IconRegularHexagon,
+  IconTuoPu,
+  IconAnTiTuoPu,
+  IconLength,
+  IconRactagle
 } from '@/components/icons'
 
 const icons = [
@@ -58,6 +66,9 @@ const icons = [
   { name: '指南针', component: IconCompass },
   { name: '断裂', component: IconBreak },
   { name: '离散', component: IconDiscrete },
+  { name: '测量', component: IconLength },
+  { name: '拓扑', component: IconTuoPu },
+  { name: '反拓扑', component: IconAnTiTuoPu },
   { name: '热力图地球', component: IconHeatmapEarth },
   { name: '经纬度地球', component: IconLatLonEarth },
   { name: '网格地球', component: IconGridEarth },
@@ -68,60 +79,11 @@ const icons = [
   { name: '添加文本', component: IconAddText },
   { name: '坐上箭头', component: IconSitArrow },
   { name: '椭圆方框', component: IconOvalBox },
+  { name: '矩形', component: IconRactagle },
   { name: '斜杠', component: IconSlash },
   { name: '六边形有六个点但左下的边缺失', component: IconIncompleteHexagon },
   { name: '普通六边形', component: IconRegularHexagon }
 ]
 </script>
 
-<style scoped>
-.icon-gallery {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 
-.icon-gallery h1 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #2c3e50;
-}
-
-.icon-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-.icon-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  background: white;
-  transition: all 0.3s ease;
-}
-
-.icon-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: #42b883;
-}
-
-.icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 10px;
-  color: #42b883;
-}
-
-.icon-name {
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-  line-height: 1.4;
-  word-break: break-word;
-}
-</style>

@@ -63,23 +63,7 @@
             </div>
           </div>
 
-          <div class="flex items-center gap-5">
-            <button 
-              class="bg-blue-500 border-none text-white px-6 py-3 rounded cursor-pointer text-sm font-medium transition-colors hover:bg-blue-600"
-              @click="startRecognition"
-            >
-              开始识别
-            </button>
-            <div class="flex items-center gap-2">
-              <input 
-                type="checkbox" 
-                id="auxiliaryMerge" 
-                v-model="auxiliaryMerge"
-                class="w-4 h-4 accent-blue-500"
-              />
-              <label for="auxiliaryMerge" class="text-sm text-gray-500 cursor-pointer">辅助合并</label>
-            </div>
-          </div>
+
         </div>
 
         <!-- 合并和阈值设置 - 下半部分 -->
@@ -114,7 +98,23 @@
             </div>
           </div>
         </div>
-
+          <div class="flex items-center gap-5 pb-5">
+            <button 
+              class="bg-blue-500 border-none text-white px-6 py-3 rounded cursor-pointer text-sm font-medium transition-colors hover:bg-blue-600"
+              @click="startRecognition"
+            >
+              开始识别
+            </button>
+            <div class="flex items-center gap-2">
+              <input 
+                type="checkbox" 
+                id="auxiliaryMerge" 
+                v-model="auxiliaryMerge"
+                class="w-4 h-4 accent-blue-500"
+              />
+              <label for="auxiliaryMerge" class="text-sm text-gray-500 cursor-pointer">辅助合并</label>
+            </div>
+          </div>
         <!-- 结果表格 -->
         <div class="mb-6">
           <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-200">

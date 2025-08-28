@@ -2,7 +2,7 @@
   <div class="h-full w-full flex items-center justify-center">
     <div class="text-center">
       <TypeWriter
-        :text="'泥石流物源自动识别与体积估算软件'"
+        :text="'岩体结构面识别与稳定性快速评价系统'"
         :typingSpeed="66"
         class="text-4xl font-bold text-blue-600 mb-8 select-none"
       />
