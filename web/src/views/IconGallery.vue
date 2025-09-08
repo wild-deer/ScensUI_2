@@ -1,6 +1,6 @@
 <template>
   <div class="p-5 max-w-6xl mx-auto">
-    <h1 class="text-center mb-8 text-slate-800 text-2xl font-bold">图标库</h1>
+    <h1 class="text-center mb-8 text-slate-800 text-3xl font-bold">图标库</h1>
     <div class="grid grid-cols-[repeat(auto-fill,minmax(150px,1fr))] gap-5">
       <div 
         class="flex flex-col items-center p-5 border border-gray-200 rounded-lg bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-emerald-500" 
@@ -8,7 +8,7 @@
         :key="icon.name"
       >
         <component :is="icon.component" class="w-12 h-12 mb-2.5 text-emerald-500" />
-        <span class="text-center text-xs text-gray-600 leading-relaxed break-words">{{ icon.name }}</span>
+        <span class="text-center text-sm text-gray-600 leading-relaxed break-words">{{ icon.name }}</span>
       </div>
     </div>
   </div>

@@ -6,13 +6,13 @@
         :typingSpeed="66"
         class="text-4xl font-bold text-blue-600 mb-8 select-none"
       />
-      <div class="text-gray-500 text-lg mb-6">
+      <div class="text-gray-500 text-xl mb-6">
         请从左侧菜单选择功能模块开始使用
       </div>
       <div class="flex gap-4 justify-center">
         <router-link
           to="/icon-gallery"
-          class="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+          class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors text-lg font-medium"
         >
           查看图标库
         </router-link>

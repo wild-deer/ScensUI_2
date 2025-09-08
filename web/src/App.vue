@@ -112,7 +112,7 @@ const getCurrentPageTitle = () => {
     <div class="w-80 bg-white/95 backdrop-blur-sm border-r border-gray-200 shadow-lg flex flex-col">
       <!-- 顶部标题 -->
       <div class="p-6 border-b border-gray-200">
-        <h1 class="text-xl font-bold text-center text-blue-600">
+        <h1 class="text-3xl font-bold text-center text-blue-600">
           岩体结构面识别与稳定性快速评价系统
         </h1>
       </div>
@@ -127,20 +127,20 @@ const getCurrentPageTitle = () => {
           >
             <div class="w-0 h-0 border-l-6 border-l-gray-600 border-t-3 border-t-transparent border-b-3 border-b-transparent mr-3 transition-transform"
                  :class="{ 'rotate-90': openSections.dataManagement }"></div>
-            <span class="font-medium">数据管理</span>
+            <span class="font-medium text-2xl">数据管理</span>
           </div>
           <div v-show="openSections.dataManagement" class="ml-6 mt-2 space-y-1">
             <div class="flex items-center p-2 rounded cursor-pointer hover:bg-gray-50 transition-all">
               <div class="w-0 h-0 border-l-4 border-l-gray-400 border-t-2 border-t-transparent border-b-2 border-b-transparent mr-2"></div>
-              <span class="text-sm">数据载入</span>
+              <span class="text-xl">数据载入</span>
             </div>
             <div class="flex items-center p-2 rounded cursor-pointer hover:bg-gray-50 transition-all">
               <div class="w-0 h-0 border-l-4 border-l-gray-400 border-t-2 border-t-transparent border-b-2 border-b-transparent mr-2"></div>
-              <span class="text-sm">绘图选项</span>
+              <span class="text-xl">绘图选项</span>
             </div>
             <div class="flex items-center p-2 rounded cursor-pointer hover:bg-gray-50 transition-all">
               <div class="w-0 h-0 border-l-4 border-l-gray-400 border-t-2 border-t-transparent border-b-2 border-b-transparent mr-2"></div>
-              <span class="text-sm">成果输出</span>
+              <span class="text-xl">成果输出</span>
             </div>
           </div>
         </div>
@@ -153,23 +153,23 @@ const getCurrentPageTitle = () => {
           >
             <div class="w-0 h-0 border-l-6 border-l-gray-600 border-t-3 border-t-transparent border-b-3 border-b-transparent mr-3 transition-transform"
                  :class="{ 'rotate-90': openSections.structureRecognition }"></div>
-            <span class="font-medium">结构面智能识别</span>
+            <span class="font-medium text-2xl">结构面智能识别</span>
           </div>
           <div v-show="openSections.structureRecognition" class="ml-6 mt-2 space-y-1">
             <div class="flex items-center p-2 rounded cursor-pointer hover:bg-gray-50 transition-all">
               <div class="w-0 h-0 border-l-4 border-l-gray-400 border-t-2 border-t-transparent border-b-2 border-b-transparent mr-2"></div>
-              <span class="text-sm">法向量估计</span>
+              <span class="text-xl">法向量估计</span>
             </div>
             <div class="flex items-center p-2 rounded cursor-pointer hover:bg-gray-50 transition-all">
               <div class="w-0 h-0 border-l-4 border-l-gray-400 border-t-2 border-t-transparent border-b-2 border-b-transparent mr-2"></div>
-              <span class="text-sm">核密度估计</span>
+              <span class="text-xl">核密度估计</span>
             </div>
             <div 
               @click="navigateToPage('StructureRecognition')"
               class="flex items-center p-2 rounded cursor-pointer hover:bg-gray-50 transition-all"
             >
               <div class="w-0 h-0 border-l-4 border-l-gray-400 border-t-2 border-t-transparent border-b-2 border-b-transparent mr-2"></div>
-              <span class="text-sm">智能识别</span>
+              <span class="text-xl">智能识别</span>
             </div>
           </div>
         </div>
@@ -182,15 +182,15 @@ const getCurrentPageTitle = () => {
           >
             <div class="w-0 h-0 border-l-6 border-l-gray-600 border-t-3 border-t-transparent border-b-3 border-b-transparent mr-3 transition-transform"
                  :class="{ 'rotate-90': openSections.kinematicAnalysis }"></div>
-            <span class="font-medium">运动学分析</span>
+            <span class="font-medium text-2xl">运动学分析</span>
           </div>
           <div v-show="openSections.kinematicAnalysis" class="ml-6 mt-2">
             <div class="bg-gray-50 border border-gray-200 rounded-lg p-3">
-              <div class="space-y-3 text-xs">
+              <div class="space-y-3 text-base">
                 <!-- 破坏类型选择 -->
                 <div class="space-y-2">
-                  <label class="block text-gray-700 font-medium">破坏类型:</label>
-                  <select class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <label class="block text-gray-700 font-medium text-xl">破坏类型:</label>
+                  <select class="w-full p-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="plane">平面破坏</option>
                     <option value="wedge">楔形体破坏</option>
                     <option value="flexural">弯曲倾倒破坏</option>
@@ -201,20 +201,20 @@ const getCurrentPageTitle = () => {
                 <!-- 边坡参数 -->
                 <div class="grid grid-cols-2 gap-4">
                   <div class="space-y-2">
-                    <label class="block text-gray-700 font-medium">边坡倾角:</label>
-                    <input type="number" value="42" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label class="block text-gray-700 font-medium text-xl">边坡倾角:</label>
+                    <input type="number" value="42" class="w-full p-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
                   </div>
                   <div class="space-y-2">
-                    <label class="block text-gray-700 font-medium">边坡倾向:</label>
-                    <input type="number" value="150" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label class="block text-gray-700 font-medium text-xl">边坡倾向:</label>
+                    <input type="number" value="150" class="w-full p-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
                   </div>
                   <div class="space-y-2">
-                    <label class="block text-gray-700 font-medium">摩擦角:</label>
-                    <input type="number" value="30" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label class="block text-gray-700 font-medium text-xl">摩擦角:</label>
+                    <input type="number" value="30" class="w-full p-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
                   </div>
                   <div class="space-y-2">
-                    <label class="block text-gray-700 font-medium">横向限制:</label>
-                    <input type="number" value="20" class="w-full p-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <label class="block text-gray-700 font-medium text-xl">横向限制:</label>
+                    <input type="number" value="20" class="w-full p-2 border border-gray-300 rounded-md text-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
                   </div>
                 </div>
                 
@@ -222,11 +222,11 @@ const getCurrentPageTitle = () => {
                 <div class="space-y-2">
                   <div class="flex items-center space-x-2">
                     <input type="checkbox" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500">
-                    <span class="text-gray-700">构造线显示</span>
+                    <span class="text-gray-700 text-xl">构造线显示</span>
                   </div>
                   <div class="flex items-center space-x-2">
                     <input type="checkbox" checked class="w-4 h-4 text-blue-600 focus:ring-blue-500">
-                    <span class="text-gray-700">高亮显示</span>
+                    <span class="text-gray-700 text-xl">高亮显示</span>
                   </div>
                 </div>
               </div>
@@ -237,15 +237,15 @@ const getCurrentPageTitle = () => {
         <!-- 物源估算功能 -->
         
         <!-- 图标库 -->
-        <div class="mb-4">
+        <!-- <div class="mb-4">
           <div 
             @click="navigateToPage('IconGallery')"
             class="flex items-center p-3 rounded-lg cursor-pointer hover:bg-gray-100 transition-all"
           >
             <div class="w-0 h-0 border-l-6 border-l-gray-600 border-t-3 border-t-transparent border-b-3 border-b-transparent mr-3"></div>
-            <span class="font-medium">图标库</span>
+            <span class="font-medium text-xl">图标库</span>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -254,7 +254,7 @@ const getCurrentPageTitle = () => {
     <div class="flex-1 flex flex-col">
       <!-- 顶部工具栏 -->
       <div class="h-16 bg-white border-b border-gray-200 shadow-sm flex items-center px-4">
-        <div class="flex items-center space-x-4 text-sm">
+        <div class="flex items-center space-x-4 text-xl">
           <span class="text-gray-600 cursor-pointer hover:text-blue-600">文件</span>
           <span class="text-gray-600 cursor-pointer hover:text-blue-600">编辑</span>
           <span class="text-gray-600 cursor-pointer hover:text-blue-600">分析</span>
@@ -265,7 +265,7 @@ const getCurrentPageTitle = () => {
         
         <!-- 当前页面显示 -->
         <div class="ml-auto flex items-center space-x-4">
-          <span class="text-sm text-gray-500">当前页面: {{ getCurrentPageTitle() }}</span>
+          <span class="text-xl text-gray-500">当前页面: {{ getCurrentPageTitle() }}</span>
  
         </div>
       </div>
